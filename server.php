@@ -94,6 +94,7 @@
             if (mysqli_num_rows($result) == 1 ) {
                 $_SESSION['username'] = $username;
                 $_SESSION['success'] = "You are logged in";
+                
                 header('location: index.php');
             }else{
                 array_push($errors, "Wrong Username/Password");

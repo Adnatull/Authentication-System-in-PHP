@@ -3,6 +3,7 @@
   <a href="#news">News</a>
   <a href="#contact">Contact</a>
   <div class="topnav-right"> 
+      
       <a>
       <?php
           echo '<script type="text/javascript">
@@ -20,6 +21,9 @@
           if( hr > 12 ) {
               hr -= 12;
               ampm = "pm";
+          }
+          if( hr == 0 )  { 
+            hr = 12;
           }
           var date = d.getDate();
           var month = months[d.getMonth()];

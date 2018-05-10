@@ -1,5 +1,5 @@
 <?php 
-include ('header.php'); 
+include ('profile-head.php'); 
 include ('navbar.php'); 
 ?>
 
@@ -13,8 +13,9 @@ include ('navbar.php');
           <div class="panel panel-info">
             <div class="panel-heading">
              
-              <a href="profile.php" class="panel-title">Adnatull Al Masum</a>
+              <a href="profile.php" class="panel-title"><?php echo $_SESSION['username']; ?></a>
               <a href="edit.html" class="panel-title pull-right">Edit Profile</a>
+              
             </div>
    
             <div class="panel-body">
