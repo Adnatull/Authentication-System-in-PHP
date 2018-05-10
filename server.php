@@ -17,8 +17,16 @@
             array_push($errors, "Username is required");
         }
 
+        if (strlen($username) < 5) {
+            array_push($errors, "Length of Username must be atleast 5");
+        }
+
         if (empty($email)) {
             array_push($errors, "Email is required");
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            array_push($errors, "The email is invalid!");
         }
 
         if (empty($pass1)) {
@@ -30,7 +38,7 @@
         }
 
         if (strlen($pass1)<6) {
-            array_push($errors, "Password length must be 6 digits");
+            array_push($errors, "Password length must be 6");
         }
 
         $alpha = false;
