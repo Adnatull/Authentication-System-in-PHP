@@ -1,6 +1,10 @@
 <?php include ('header.php') ?> 
 <?php include ('navbar.php') ?>
 
+<?php if (isset($_SESSION["username"])): ?>
+    <h3 align = "center" class="content success"> You are already Logged in </h3>
+<?php else: ?>
+
     <div class="header">
         <h2>Register</h2>
     </div>
@@ -35,5 +39,6 @@
             Already a member? <a href="login.php"> Sign in</a>
         </p>
     </form>
+<?php endif ?>  
 
 <?php include('footer.php') ?>
