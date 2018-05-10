@@ -29,14 +29,40 @@
             array_push($errors, "Passwords mismatch");
         }
 
+        if (strlen($pass1)<6) {
+            array_push($errors, "Password length must be 6 digits");
+        }
+
+        $alpha = false;
+        $digit = false;
+        for ($i=0; $i<strlen($pass1); $i++) {
+            if (ctype_alpha( $pass1[$i] )) {
+                $alpha = true;
+            } else if (ctype_digit( $pass1[$i] )) {
+                $digit = true;
+            }
+        }
+        if (!$alpha) {
+            array_push($errors, "Password must contains atleast one alphabet!");
+        }
+        if (!$digit) {
+            array_push($errors, "Password must contains atleast one numeric number!");
+        }
+
+
         if (count($errors) == 0) {
             $password = md5($pass1);
             $sql = "INSERT INTO users (username, email, password) VALUES('$username', '$email', '$password')";
-            mysqli_query($db, $sql);
+            $result = mysqli_query($db, $sql);
 
-            $_SESSION['username'] = $username;
-            $_SESSION['success'] = "You are logged in";
-            header('location: index.php');
+            if (!$result) {
+                array_push($errors, "The username/email already exist!");
+            }
+            else {
+                $_SESSION['username'] = $username;
+                $_SESSION['success'] = "You are logged in";
+                header('location: index.php');
+            }
         }
     }
 
@@ -73,7 +99,7 @@
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
-        header('location: login.php');
+        header('location: index.php');
     }
 
 ?>
