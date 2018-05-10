@@ -1,66 +1,48 @@
-<?php include ('header.php') ?>
-<?php include ('navbar.php') ?>
+<?php 
+include ('header.php'); 
+include ('navbar.php'); 
+?>
 
 
 <div class="container">
       <div class="row">
-      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-           <A href="edit.html" >Edit Profile</A>
-
-        
-       <br>
-        <p class="text-info">
-            
-        </p>
-      </div>
+      
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
    
    
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h3 class="panel-title">Sheena Shrestha</h3>
+             
+              <a href="profile.php" class="panel-title">Adnatull Al Masum</a>
+              <a href="edit.html" class="panel-title pull-right">Edit Profile</a>
             </div>
+   
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="images/default-profile.png" class="img-circle img-responsive"> </div>
-                
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Department:</td>
-                        <td>Programming</td>
+                        <td>Name:</td>
+                        <td>Adnatull Al Masum</td>
                       </tr>
                       <tr>
-                        <td>Hire date:</td>
-                        <td>06/23/2013</td>
-                        
+                        <td>Designation:</td>
+                        <td>Student</td>
                       </tr>
                       <tr>
                         <td>Date of Birth</td>
                         <td>01/24/1988</td>
                       </tr>
-                   
-                         <tr>
-                             <tr>
+                                        
+                      <tr>
                         <td>Gender</td>
-                        <td>Female</td>
+                        <td>Male</td>
                       </tr>
-                        <tr>
+                      <tr>
                         <td>Home Address</td>
-                        <td>Kathmandu,Nepal</td>
+                        <td>Dhaka, Bangladesh</td>
                       </tr>
                       <tr>
                         <td>Email</td>
@@ -75,8 +57,8 @@
                     </tbody>
                   </table>
                   
-                  <a href="#" class="btn btn-primary">My Sales Performance</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
+                  <a href="#" class="btn btn-primary">Entries</a>
+                  <a href="#" class="btn btn-primary">Entries 2</a>
                 </div>
               </div>
             </div>
