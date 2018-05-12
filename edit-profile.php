@@ -22,9 +22,32 @@ include ('navbar.php');
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="images/default-profile.png" class="img-circle img-responsive"> </div>
                 <div class=" col-md-9 col-lg-9 "> 
+                <?php include('errors.php'); ?>
                   <table class="table table-user-information">
                   <form method="post" action="edit-profile.php">
+
                     <tbody>
+                        <tr>
+                            <td>User Name:</td>
+                            <td>
+                            <input type="text" name="username" value="<?php echo $_SESSION['username']; ?>">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Password:</td>
+                            <td>
+                            <input type="password" name="password1" >
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Confirm Password:</td>
+                            <td>
+                            <input type="password" name="password2" >
+                            </td>
+                        </tr>
+
                       <tr>
                         <td>First Name:</td>
                         <td>
@@ -78,11 +101,14 @@ include ('navbar.php');
                       </tr>
                      
                     </tbody>
+                  <!--  <button type="submit" name="update" class="btn btn-primary">Update</button> -->
+                    <input type="submit" id="submit-form" name="update" class="hidden" />
                     </form>
                   </table>
+                    
+                  <label class="btn btn-primary" for="submit-form" tabindex="0">Update</label>          
+                  <!-- <a href="#" class="btn btn-primary">Entries</a> -->
                   
-                  <a href="#" class="btn btn-primary">Entries</a>
-                  <a href="#" class="btn btn-primary">Entries 2</a>
                 </div>
               </div>
             </div>
