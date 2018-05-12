@@ -23,110 +23,62 @@ include ('navbar.php');
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="images/default-profile.png" class="img-circle img-responsive"> </div>
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
+                  <form method="post" action="edit-profile.php">
                     <tbody>
                       <tr>
-                        <td>Name:</td>
+                        <td>First Name:</td>
                         <td>
-                          <?php
-                              
-                              if ($_SESSION['name']==null) {
-                                  echo "New User";
-                              }
-                              else {
-                                  echo $_SESSION['name'];
-                              }
-                          ?>
+                        <input type="text" name="firstname" value="<?php echo $_SESSION['firstname']; ?>">
                         </td>
                       </tr>
+
+                        <tr>
+                            <td>Last Name:</td>
+                            <td>
+                            <input type="text" name="lastname" value="<?php echo $_SESSION['lastname']; ?>">
+                            </td>
+                        </tr>
+
                       <tr>
                         <td>Profession:</td>
                         <td>
-                          <?php
-                                if ($_SESSION['profession']==null) {
-                                    echo "Unknown";
-                                }
-                                else {
-                                    echo $_SESSION['profession'];
-                                }
-                          ?>                        
+                            <input type="text" name="profession" value="<?php echo $_SESSION['profession']; ?>">                        
                         </td>
                       </tr>
                       <tr>
                         <td>Date of Birth</td>
                         <td>
-                        <?php
-                                if ($_SESSION['birthdate']==null) {
-                                    echo "Unknown";
-                                }
-                                else {
-                                    echo $_SESSION['birthdate'];
-                                }
-                          ?>
+                            <input type="date" name="birthdate"  > 
                         </td>
                       </tr>
                                         
                       <tr>
                         <td>Gender</td>
                         <td>
-                          <?php
-                                if ($_SESSION['gender']==null) {
-                                    echo "Unknown";
-                                }
-                                else {
-                                    echo $_SESSION['gender'];
-                                }
-                          ?>
+                            <input type="text" name="gender" value="<?php echo $_SESSION['gender']; ?>"> 
                         </td>
                       </tr>
                       <tr>
                         <td>Home Address</td>
                         <td>
-                        <?php
-                                if ($_SESSION['location']==null) {
-                                    echo "Unknown";
-                                }
-                                else {
-                                    echo $_SESSION['location'];
-                                }
-                          ?>  
+                            <input type="text" name="location" value="<?php echo $_SESSION['location'] ?>">   
                         </td>
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="mailto:<?php
-                                if ($_SESSION['email']==null) {
-                                    echo "Unknown";
-                                }
-                                else {
-                                    echo $_SESSION['email'];
-                                }
-                          ?>">
-                        <?php
-                                if ($_SESSION['email']==null) {
-                                    echo "Unknown";
-                                }
-                                else {
-                                    echo $_SESSION['email'];
-                                }
-                          ?>   
-                        </a></td>
+                        <td>
+                            <input type="text" name="email" value="<?php echo $_SESSION['email']; ?>">                        
+                        </td>
                       </tr>
                         <td>Phone Number</td>
                         <td>
-                        <?php
-                                if ($_SESSION['mobile']==null) {
-                                    echo "Unknown";
-                                }
-                                else {
-                                    echo $_SESSION['mobile'];
-                                }
-                          ?> 
-
+                            <input type="text" name="mobile" value="<?php echo $_SESSION['mobile']; ?>">
                         </td>
                            
                       </tr>
                      
                     </tbody>
+                    </form>
                   </table>
                   
                   <a href="#" class="btn btn-primary">Entries</a>

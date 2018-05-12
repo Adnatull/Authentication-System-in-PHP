@@ -95,16 +95,19 @@
                 $_SESSION['username'] = $username;
                 $_SESSION['success'] = "You are logged in";
 
-                header('location: index.php');
+                
 
                 $userdata = $result->fetch_object();
-                $_SESSION['name'] = $userdata->firstname . $userdata->lastname;
+                $_SESSION['name'] = $userdata->firstname . ' ' . $userdata->lastname;
+                $_SESSION['firstname'] = $userdata->firstname;
+                $_SESSION['lastname'] = $userdata->lastname;
                 $_SESSION['profession'] = $userdata->profession;
                 $_SESSION['birthdate'] = $userdata->birthdate;
                 $_SESSION['gender'] = $userdata->gender;
                 $_SESSION['location'] = $userdata->location;
                 $_SESSION['email'] = $userdata->email;
                 $_SESSION['mobile'] = $userdata->mobile;
+                header('location: index.php');
             }else{
                 array_push($errors, "Wrong Username/Password");
                 
@@ -117,6 +120,16 @@
     if (isset($_GET['logout'])) {
         session_destroy();
         unset($_SESSION['username']);
+
+        unset($_SESSION['name']);
+        unset($_SESSION['birthdate']);
+        unset($_SESSION['profession']);
+        unset($_SESSION['gender']);
+        unset($_SESSION['location']);
+        unset($_SESSION['email']);
+        unset($_SESSION['mobile']);
+
+
         header('location: index.php');
     }
 
