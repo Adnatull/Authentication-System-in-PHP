@@ -94,8 +94,17 @@
             if (mysqli_num_rows($result) == 1 ) {
                 $_SESSION['username'] = $username;
                 $_SESSION['success'] = "You are logged in";
-                
+
                 header('location: index.php');
+
+                $userdata = $result->fetch_object();
+                $_SESSION['name'] = $userdata->firstname . $userdata->lastname;
+                $_SESSION['profession'] = $userdata->profession;
+                $_SESSION['birthdate'] = $userdata->birthdate;
+                $_SESSION['gender'] = $userdata->gender;
+                $_SESSION['location'] = $userdata->location;
+                $_SESSION['email'] = $userdata->email;
+                $_SESSION['mobile'] = $userdata->mobile;
             }else{
                 array_push($errors, "Wrong Username/Password");
                 

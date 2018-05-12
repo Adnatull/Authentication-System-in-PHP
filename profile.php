@@ -26,31 +26,102 @@ include ('navbar.php');
                     <tbody>
                       <tr>
                         <td>Name:</td>
-                        <td>Adnatull Al Masum</td>
+                        <td>
+                          <?php
+                              
+                              if ($_SESSION['name']==null) {
+                                  echo "New User";
+                              }
+                              else {
+                                  echo $_SESSION['name'];
+                              }
+                          ?>
+                        </td>
                       </tr>
                       <tr>
-                        <td>Designation:</td>
-                        <td>Student</td>
+                        <td>Profession:</td>
+                        <td>
+                          <?php
+                                if ($_SESSION['profession']==null) {
+                                    echo "Unknown";
+                                }
+                                else {
+                                    echo $_SESSION['profession'];
+                                }
+                          ?>                        
+                        </td>
                       </tr>
                       <tr>
                         <td>Date of Birth</td>
-                        <td>01/24/1988</td>
+                        <td>
+                        <?php
+                                if ($_SESSION['birthdate']==null) {
+                                    echo "Unknown";
+                                }
+                                else {
+                                    echo $_SESSION['birthdate'];
+                                }
+                          ?>
+                        </td>
                       </tr>
                                         
                       <tr>
                         <td>Gender</td>
-                        <td>Male</td>
+                        <td>
+                          <?php
+                                if ($_SESSION['gender']==null) {
+                                    echo "Unknown";
+                                }
+                                else {
+                                    echo $_SESSION['gender'];
+                                }
+                          ?>
+                        </td>
                       </tr>
                       <tr>
                         <td>Home Address</td>
-                        <td>Dhaka, Bangladesh</td>
+                        <td>
+                        <?php
+                                if ($_SESSION['location']==null) {
+                                    echo "Unknown";
+                                }
+                                else {
+                                    echo $_SESSION['location'];
+                                }
+                          ?>  
+                        </td>
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="mailto:info@support.com">info@support.com</a></td>
+                        <td><a href="mailto:<?php
+                                if ($_SESSION['email']==null) {
+                                    echo "Unknown";
+                                }
+                                else {
+                                    echo $_SESSION['email'];
+                                }
+                          ?>">
+                        <?php
+                                if ($_SESSION['email']==null) {
+                                    echo "Unknown";
+                                }
+                                else {
+                                    echo $_SESSION['email'];
+                                }
+                          ?>   
+                        </a></td>
                       </tr>
                         <td>Phone Number</td>
-                        <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
+                        <td>
+                        <?php
+                                if ($_SESSION['mobile']==null) {
+                                    echo "Unknown";
+                                }
+                                else {
+                                    echo $_SESSION['mobile'];
+                                }
+                          ?> 
+
                         </td>
                            
                       </tr>

@@ -1,8 +1,8 @@
 <div class="topnav">
-  <a class="active" href="index.php">Home</a>
-  <a href="#news">News</a>
-  <a href="#contact">Contact</a>
-  <div class="topnav-right"> 
+    <a class="active" href="index.php">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <div class="topnav-right"> 
         <b style="float:left;color:#f2f2f2;text-align:center;padding: 14px 16px;text-decoration:none;font-size:17px;">
             <?php
                 echo '<script type="text/javascript">
