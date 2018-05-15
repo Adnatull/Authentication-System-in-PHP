@@ -106,6 +106,9 @@
                 $_SESSION['location'] = $userdata->location;
                 $_SESSION['email'] = $userdata->email;
                 $_SESSION['mobile'] = $userdata->mobile;
+                $_SESSION['img'] = $userdata->img;
+                echo "HELLO ".$userdata->img;
+                echo $userdata->img;
                 header('location: index.php');
             }else{
                 array_push($errors, "Wrong Username/Password");               
@@ -114,6 +117,11 @@
     }
 
     if (isset($_POST['update'])) {
+        $img = "";
+        if (!empty($_FILES['img'])){
+            $img = $_FILES['img']['name'];
+        }
+        
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
         $pass1 = mysqli_real_escape_string($db, $_POST['password1']);
@@ -126,6 +134,14 @@
         $location = mysqli_real_escape_string($db, $_POST['location']);
         $mobile = mysqli_real_escape_string($db, $_POST['mobile']);
 
+
+        if(strlen($img)>0) {
+            $target = "images/profile/".basename($img);
+            if ( !move_uploaded_file($_FILES['img']['tmp_name'], $target) ) {      
+                array_push($errors, "Failed to upload photo!");
+            }
+      
+        }
 
         if (empty($username)) {
             array_push($errors, "Username is required");
@@ -175,7 +191,7 @@
             $password = md5($pass1);
 
             
-            $sql = "UPDATE users SET username = '$username', email='$email', password='$password', firstname='$firstname', lastname = '$lastname', profession = '$profession', birthdate = $birthdate, gender = '$gender', location = '$location', mobile = '$mobile' WHERE username = '$username'";
+            $sql = "UPDATE users SET username = '$username', img = '$img', email='$email', password='$password', firstname='$firstname', lastname = '$lastname', profession = '$profession', birthdate = $birthdate, gender = '$gender', location = '$location', mobile = '$mobile' WHERE username = '$username'";
            
             
             if ($db->query($sql) == FALSE) {
@@ -195,6 +211,7 @@
                 $_SESSION['location'] = $location;
                 $_SESSION['email'] = $email;
                 $_SESSION['mobile'] = $mobile;
+                $_SESSION['img'] = $img;
                 
 
 
@@ -214,6 +231,8 @@
         unset($_SESSION['location']);
         unset($_SESSION['email']);
         unset($_SESSION['mobile']);
+        unset($_SESSION['img']);
+
 
 
         header('location: index.php');

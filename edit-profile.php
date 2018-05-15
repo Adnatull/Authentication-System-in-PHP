@@ -24,9 +24,17 @@ include ('navbar.php');
                 <div class=" col-md-9 col-lg-9 "> 
                 <?php include('errors.php'); ?>
                   <table class="table table-user-information">
-                  <form method="post" action="edit-profile.php">
+                  <form method="post" action="edit-profile.php"  enctype="multipart/form-data" >
 
                     <tbody>
+                        <tr>
+                            <td>
+                            Upload Profile Photo:
+                            </td>
+                            <td>
+                            <input type="file" name="img" >
+                            </td>
+                        </tr>
                         <tr>
                             <td>User Name:</td>
                             <td>
