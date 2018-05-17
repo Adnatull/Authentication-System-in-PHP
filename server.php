@@ -180,11 +180,10 @@
             array_push($errors, "Password length must be 6");
         }
         if (strlen($gender)>0) {
-            // This part does not work! need to fix it
             $male = 'Male';
             $female = 'Female';
-            if ( ($gender != $male) && ($gender != $female)) {
-                 array_push($errrors, "Gender is incorrect!");
+            if ( ($gender !== $male) && ($gender !== $female)) {
+                 array_push($errors, "Gender is incorrect!");
             }
          }
 
