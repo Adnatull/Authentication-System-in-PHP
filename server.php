@@ -118,8 +118,19 @@
 
     if (isset($_POST['update'])) {
         $img = "";
+        //$tmpusername = $username;
+        $imgextension = "";
         if (!empty($_FILES['img'])){
             $img = $_FILES['img']['name'];
+            $tmp = strrev($img);
+            for ($i=0; $i<strlen($tmp); $i++) {
+                $imgextension = $tmp[$i].$imgextension;
+                if ($tmp[$i]=='.') {
+                    break;
+                }
+            }
+
+            
         }
         
         $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -135,13 +146,7 @@
         $mobile = mysqli_real_escape_string($db, $_POST['mobile']);
 
 
-        if(strlen($img)>0) {
-            $target = "images/profile/".basename($img);
-            if ( !move_uploaded_file($_FILES['img']['tmp_name'], $target) ) {      
-                array_push($errors, "Failed to upload photo!");
-            }
-      
-        }
+        
 
         if (empty($username)) {
             array_push($errors, "Username is required");
@@ -171,6 +176,8 @@
             array_push($errors, "Password length must be 6");
         }
 
+        
+
         $alpha = false;
         $digit = false;
         for ($i=0; $i<strlen($pass1); $i++) {
@@ -187,18 +194,38 @@
             array_push($errors, "Password must contains atleast one numeric number!");
         }
 
-        if (count($errors) == 0) {
+        if(strlen($img)>0) {
+            $img = $username.md5($img).$imgextension;
+            $target = "images/profile/".basename($img);
+            if ( !move_uploaded_file($_FILES['img']['tmp_name'], $target) ) {      
+                array_push($errors, "Failed to upload photo!");
+            }
+      
+        }
+
+        if (count($errors) == 0)  {
             $password = md5($pass1);
 
-            
-            $sql = "UPDATE users SET username = '$username', img = '$img', email='$email', password='$password', firstname='$firstname', lastname = '$lastname', profession = '$profession', birthdate = $birthdate, gender = '$gender', location = '$location', mobile = '$mobile' WHERE username = '$username'";
+            $tmp = $_SESSION['username'];
+            $sql = "UPDATE users SET username = '$username', img = '$img', email='$email', password='$password', firstname='$firstname', lastname = '$lastname', profession = '$profession', birthdate = $birthdate, gender = '$gender', location = '$location', mobile = '$mobile' WHERE username = '$tmp'";
            
             
             if ($db->query($sql) == FALSE) {
+
+                if (file_exists($target)) {
+                    unlink($target);
+                }
             
                 array_push($errors, "The username/email already exist!");
             }
             else {
+                if ($_SESSION['img']!=null && $_SESSION['username'] != $username){
+                    $pastimg = $_SESSION['img'];
+                    if (file_exists("images/profile/".basename($pastimg))) {
+                        unlink("images/profile/".basename($pastimg));
+                    }
+                }
+                
                 $_SESSION['username'] = $username;
                 $_SESSION['success'] = "information updated";
 
@@ -217,6 +244,8 @@
 
                 header('location: index.php');
             }
+        } else if (file_exists($target)) {
+            unlink($target);
         }
     }
 
