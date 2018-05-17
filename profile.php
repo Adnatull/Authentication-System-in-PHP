@@ -3,7 +3,7 @@ include ('profile-head.php');
 include ('navbar.php'); 
 ?>
 
-
+<?php if (isset($_SESSION['username'])): ?>
 <div class="container">
       <div class="row">
       
@@ -153,5 +153,8 @@ include ('navbar.php');
         </div>
       </div>
     </div>
+    <?php else: ?>
+            <h3> You are not logged in! </h3>
+    <?php endif ?>
 
 <?php include ('footer.php') ?>

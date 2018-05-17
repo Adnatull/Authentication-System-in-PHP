@@ -167,6 +167,10 @@
         if (empty($pass1)) {
             array_push($errors, "Password is required");
         }
+        if (empty($birthdate)) {
+            array_push($errors, "Date of Birth is required");
+        }
+        
 
         if ($pass1 != $pass2) {
             array_push($errors, "Passwords mismatch");
@@ -175,6 +179,14 @@
         if (strlen($pass1)<6) {
             array_push($errors, "Password length must be 6");
         }
+        if (strlen($gender)>0) {
+            // This part does not work! need to fix it
+            $male = 'Male';
+            $female = 'Female';
+            if ( ($gender != $male) && ($gender != $female)) {
+                 array_push($errrors, "Gender is incorrect!");
+            }
+         }
 
         
 
@@ -238,8 +250,11 @@
                 $_SESSION['location'] = $location;
                 $_SESSION['email'] = $email;
                 $_SESSION['mobile'] = $mobile;
-                $_SESSION['img'] = $img;
-                
+                if ($img==null) {
+                    unset($_SESSION['img']);
+                } else {
+                    $_SESSION['img'] = $img;
+                }
 
 
                 header('location: index.php');
@@ -261,6 +276,8 @@
         unset($_SESSION['email']);
         unset($_SESSION['mobile']);
         unset($_SESSION['img']);
+        unset($_SESSION['firstname']);
+        unset($_SESSION['lastname']);
 
 
 

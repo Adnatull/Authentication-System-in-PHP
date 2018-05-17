@@ -3,7 +3,7 @@ include ('profile-head.php');
 include ('navbar.php'); 
 ?>
 
-
+<?php if (isset($_SESSION['username'])): ?>
 <div class="container">
       <div class="row">
       
@@ -93,7 +93,11 @@ include ('navbar.php');
                       <tr>
                         <td>Gender</td>
                         <td>
-                            <input type="text" name="gender" value="<?php echo $_SESSION['gender']; ?>"> 
+                            <select name="gender">
+                                <option value="Unknown"> Unknown </option>
+                                <option value="Male"> Male </option>
+                                <option value="Female"> Female </option> 
+                            </select>
                         </td>
                       </tr>
                       <tr>
@@ -139,5 +143,8 @@ include ('navbar.php');
         </div>
       </div>
     </div>
+                  <?php else: ?>
+                  <h4> You are not logged in! </h4>
 
+                  <?php endif ?>
 <?php include ('footer.php') ?>
