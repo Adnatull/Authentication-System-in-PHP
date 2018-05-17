@@ -20,7 +20,14 @@ include ('navbar.php');
    
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="images/default-profile.png" class="img-circle img-responsive"> </div>
+              <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src= <?php 
+                    if ($_SESSION['img']!=null) {
+                      echo "images/profile/".$_SESSION['img'];
+                    }
+                    else {
+                      echo "images/default-profile.png";
+                    }
+                ?> class="img-circle img-responsive"> </div>
                 <div class=" col-md-9 col-lg-9 "> 
                 <?php include('errors.php'); ?>
                   <table class="table table-user-information">

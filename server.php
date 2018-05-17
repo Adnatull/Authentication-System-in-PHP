@@ -199,8 +199,8 @@
             $target = "images/profile/".basename($img);
             if ( !move_uploaded_file($_FILES['img']['tmp_name'], $target) ) {      
                 array_push($errors, "Failed to upload photo!");
-            }
-      
+            } 
+              
         }
 
         if (count($errors) == 0)  {
